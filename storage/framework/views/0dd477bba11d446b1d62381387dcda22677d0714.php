@@ -238,7 +238,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('ing.index')}}" class="nav-link">
+                <a href="<?php echo e(route('ing.index')); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar ingreso</p>
                 </a>
@@ -280,7 +280,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      @yield('content')
+      <?php echo $__env->yieldContent('content'); ?>
     </div>
     <!-- /.content -->
   </div>
@@ -355,4 +355,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
           $(this).parent().parent().remove();
       }
   });
-</script>
+</script><?php /**PATH D:\Escritorio\naviera1\resources\views/layout.blade.php ENDPATH**/ ?>
