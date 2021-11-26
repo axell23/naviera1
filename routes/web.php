@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('ing', 'Ingresos');
-Route::resource('Reg', 'ProductosController');
+Route::resource('ing', 'IngresoCargaController');
+Route::resource('Reg', 'ProductoController');
 Route::resource('cat', 'CategoriaController');
