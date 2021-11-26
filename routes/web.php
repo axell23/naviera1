@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('ing', 'Ingresos');
+Route::resource('Reg', 'ProductosController');
+Route::resource('cat', 'CategoriaController');
