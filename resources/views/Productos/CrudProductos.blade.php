@@ -1,64 +1,52 @@
 @extends('layout')
 @section('content')
 	<div class="container">
-		<form method="POST" action="" id="formulario">
-			<!-- @csrf -->
+		<form method="POST" action="{{route('Reg.store')}}" id="formulario">
+			 @csrf 
 			<section>
 				<div class="panel panel-header">
 					<div class="row">
 						<div class="col-md-6 mb-4">
 						
-			
+
+        <div class="form-row">
+		<div class="form-group col-md-8">
+			<label>Nombre Producto</label>
+			<input type="text" class="form-control" id="nombreProducto" name="nombreProducto" maxlength="25" placeholder="Escribe nombre del Producto...">
+		</div>
+
+		<div class="form-row">
+		<div class="form-group col-md-8">
+			<label>Peso</label>
+			<input type="text" class="form-control" id="peso" name="peso" maxlength="25" placeholder="Escriba el peso de Producto...">
+		</div>
+
+		<div class="form-group col-md-8">
+			<label>Descripcion</label>
+			<input type="text" class="form-control" id="descripcion" name="descripcion" maxlength="25" placeholder="Descripcion del Producto...">
+		</div>
+
+		
+		<div class="panel panel-header">
+					<div class="row">
+						<div class="col-md-6 mb-4">
+							<label for="idCategoria">Categoria</label>
+							<select name="idCategoria" id="idCategoria" class="custom-select selectcategoria">
+								<option value="0" selected disabled>Seleccione Categoria</option>
+								@foreach($categoria as $cat)
+								<option value="{{$cat->id}}">{{$cat->nombre}}</option>
+								@endforeach
+							</select>
+							<span id="" name="" class="AlertaMsg"></span>
+						</div>
+					</div>
+				</div>
+
 				</div>
 				<div class="panel panel-footer">
-					<table class="table table-border" id="Compra">
-						<thead>
-							<tr>
-								<th>Nombre del producto
-								<span id="msgnombreproducto" name="msgnombreproducto" class="AlertaMsg"></span>
-								</th>
-								<th>Cantidad
-								<span id="msgidcantidad" name="msgidcantidad" class="AlertaMsg"></span>
-								</th>
-			
-								<th>Fecha Vencimiento
-								<span id="msgidprecioC" name="msgidprecioC" class="AlertaMsg"></span>
-								</th>
-								<th>Descripcion
-								<span id="msgdescripcion" name="msgdescripcion" class="AlertaMsg"></span>
-								</th>
-			
-								{{-- <th><a href="#" class="addRow btn btn-success">Agregar</a></th> --}}
-								<td><button type="button" id="btmComprasTab"  class="addRow btn btn-success">Agregar</button></td>
-							</tr>
-						</thead>
-						<tbody id="tbody">
-							<tr>
-
-								<td>
-									<input id="nombreproducto" disabled name="nombreproducto[]" list="productos" class="a form-control" autocomplete="off" required>
-									<datalist id="productos">
-									</datalist>  
-								</td>
-
-								<td>
-									<input type="number" min="1" disabled name="idcantidad[]" id="idcantidad" class="b form-control" required>
-								</td>
-								<td>
-									<input type="date" min="0.1" disabled step="any" name="Descripccion[]" class="c form-control" required>
-								</td>
-								<td>
-									<input type="Descripcion" min="0.1" disabled name="Descripcion" name="Descripccion[]" class="c form-control" required>
-								</td>
-							
-								<!-- {{-- <td><a href="#" class="btn btn-danger remove">Eliminar</a></td> --}} -->
-								<td><button type="button" id="btnEliminar" disabled class="btn btn-danger remove">Eliminar</button></td>
-							</tr>
-						</tbody>						
-					</table>
-				</div>
+				
 			</section>
-			<button id="btmsubmitC" name="btmsubmitC" type="submit" class="btn btn-primary" disabled>Iniciar Ingreso</button>
+			<button id="btmsubmitC" name="btmsubmitC" type="submit" class="btn btn-primary" >Ingresar Categoria</button>
 			<a href=""><button type="button" id="btnLimpiar" class="btn btn-danger">Limpiar Campos</button></a>
 		</form>
 	</div>
