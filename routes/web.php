@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('ing', 'IngresoCargaController');
+Route::resource('ing', 'IngresosController');
 Route::resource('Reg', 'ProductoController');
 Route::resource('cat', 'CategoriaController');
+Route::resource('bah', 'BahiaController');
+
+Route::get('/Ingresosactuales', 'IngresosController@index2')->name('Ingresos');

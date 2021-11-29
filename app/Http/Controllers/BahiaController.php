@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\categoria;
-use App\ProductoController;
+
+use App\bahia;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProductoControllerController extends Controller
+class BahiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +15,8 @@ class ProductoControllerController extends Controller
      */
     public function index()
     {
-
-
-        $categoria = Categoria::all();
-
-        return view("Productos.CrudProductos", compact('categoria'));
-
-
+        $bahia = bahia::all();
+        return view("bahia.Vistabahia", compact('bahia'));
     }
 
     /**
@@ -30,7 +26,7 @@ class ProductoControllerController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -41,28 +37,22 @@ class ProductoControllerController extends Controller
      */
     public function store(Request $request)
     {
-        $creandoProducto = new ProductoController();
+        //dd($request);
+        $bahia= bahia::where('id',$request->bahia)->first();
+        $bahia->estado="Disponible";
+        $bahia->update();
 
-        $creandoProducto->nombre = $request->nombreProducto;
-        $creandoProducto->peso = $request->peso;
-        $creandoProducto->descripcion = $request->descripcion;
-        $creandoProducto->categorias = $request->categorias;
-
-        
-        $creandoProducto->save();
-      
-        return view("Productos.CrudProductos");
-
-
+        $bahia = bahia::all();
+        return view("bahia.Vistabahia", compact('bahia'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProductoController  $productoController
+     * @param  \App\bahia  $bahia
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductoController $productoController)
+    public function show(bahia $bahia)
     {
         //
     }
@@ -70,10 +60,10 @@ class ProductoControllerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProductoController  $productoController
+     * @param  \App\bahia  $bahia
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductoController $productoController)
+    public function edit(bahia $bahia)
     {
         //
     }
@@ -82,10 +72,10 @@ class ProductoControllerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProductoController  $productoController
+     * @param  \App\bahia  $bahia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductoController $productoController)
+    public function update(Request $request, bahia $bahia)
     {
         //
     }
@@ -93,10 +83,10 @@ class ProductoControllerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProductoController  $productoController
+     * @param  \App\bahia  $bahia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductoController $productoController)
+    public function destroy(bahia $bahia)
     {
         //
     }

@@ -192,41 +192,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+              <!-- Productos -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-boxes"></i>
+              
               <p>
-                Starter Pages
+                Inventario
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="<?php echo e(route('Reg.index')); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Registrar Producto</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Ver</p>
+                </a>
+              </li>           
+
+              <li class="nav-item">
+                <a href="<?php echo e(route('cat.index')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar Categoria</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver Categoria</p>
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-
           <!-- Ingreso -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
@@ -244,13 +246,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/Ingresosactuales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver Ingresos</p>
                 </a>
               </li>
             </ul>
           </li>
+          <!-- Bahias -->
+          <li class="nav-item menu-open">
+              <a href="<?php echo e(route('bah.index')); ?>" class="nav-link active">
+                <i class="nav-icon fas fa-ship"></i>
+                <p>
+                  Bahias
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -319,6 +331,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </body>
 </html>
 
+<?php if(Request::is('ing')): ?>
 <script type="text/javascript">
 
 
@@ -337,7 +350,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       // console.log(selectProducto);
       var tr = '<tr>';
 
-      tr += '<td><input id="nombreproducto"  name="nombreproducto[]" list="productos" class="a form-control" autocomplete="off" required></td>'+
+      tr += '<td><input id="nombreproducto"  name="nombreproducto[]" list="productos" class="a form-control" autocomplete="off" required></td>'+'<datalist id="productos"><?php $__currentLoopData = $producto; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $productoiten): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option value="<?php echo e($productoiten->id); ?>-<?php echo e($productoiten->nombre); ?> (<?php echo e($productoiten->peso); ?>kg)"></option>	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></datalist>'+
       '<td><input type="number" min="0" name="idcantidad[]" class="b form-control" required></td>'+
       '<td><input type="date" min="0" step="any" name="idprecioC[]" class="c form-control" required></td>'+
       '<td><a href="#" class="btn btn-danger remove">Eliminar</a></td>'
@@ -355,4 +368,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
           $(this).parent().parent().remove();
       }
   });
-</script><?php /**PATH D:\Escritorio\naviera1\resources\views/layout.blade.php ENDPATH**/ ?>
+</script>
+<?php endif; ?><?php /**PATH D:\Escritorio\naviera1\resources\views/layout.blade.php ENDPATH**/ ?>

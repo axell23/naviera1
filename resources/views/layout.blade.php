@@ -192,44 +192,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+              <!-- Productos -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-              <!-- Productos -->
-              <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-truck-loading"></i>
+              <i class="nav-icon fas fa-boxes"></i>
+              
               <p>
                 Inventario
                 <i class="right fas fa-angle-left"></i>
@@ -247,7 +214,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver</p>
                 </a>
-              </li>
+              </li>           
 
               <li class="nav-item">
                 <a href="{{route('cat.index')}}" class="nav-link">
@@ -261,6 +228,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Ver Categoria</p>
                 </a>
               </li>
+            </ul>
           <!-- Ingreso -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
@@ -278,13 +246,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/Ingresosactuales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver Ingresos</p>
                 </a>
               </li>
             </ul>
           </li>
+          <!-- Bahias -->
+          <li class="nav-item menu-open">
+              <a href="{{route('bah.index')}}" class="nav-link active">
+                <i class="nav-icon fas fa-ship"></i>
+                <p>
+                  Bahias
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -353,6 +331,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </body>
 </html>
 
+@if (Request::is('ing'))
 <script type="text/javascript">
 
 
@@ -371,7 +350,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       // console.log(selectProducto);
       var tr = '<tr>';
 
-      tr += '<td><input id="nombreproducto"  name="nombreproducto[]" list="productos" class="a form-control" autocomplete="off" required></td>'+
+      tr += '<td><input id="nombreproducto"  name="nombreproducto[]" list="productos" class="a form-control" autocomplete="off" required></td>'+'<datalist id="productos">@foreach ($producto as $productoiten)<option value="{{$productoiten->id}}-{{$productoiten->nombre}} ({{$productoiten->peso}}kg)"></option>	@endforeach</datalist>'+
       '<td><input type="number" min="0" name="idcantidad[]" class="b form-control" required></td>'+
       '<td><input type="date" min="0" step="any" name="idprecioC[]" class="c form-control" required></td>'+
       '<td><a href="#" class="btn btn-danger remove">Eliminar</a></td>'
@@ -390,3 +369,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
       }
   });
 </script>
+@endif
