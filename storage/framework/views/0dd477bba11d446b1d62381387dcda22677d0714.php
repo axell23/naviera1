@@ -264,13 +264,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="<?php echo e(route('sal.index')); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar salida</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/salidas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver salidas</p>
                 </a>
@@ -279,14 +279,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <!-- Bahias -->
           <li class="nav-item menu-close">
-              <a href="<?php echo e(route('bah.index')); ?>" class="nav-link active">
-                <i class="nav-icon fas fa-ship"></i>
-                <p>
-                  Bahias
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-            </li>
+            <a href="<?php echo e(route('bah.index')); ?>" class="nav-link active">
+              <i class="nav-icon fas fa-ship"></i>
+              <p>
+                Bahias
+                <i ></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-close">
+            <a href="<?php echo e(route('lot.index')); ?>" class="nav-link active">
+              <i class="nav-icon far fa-calendar-check"></i>
+              <p>
+                Control de Vencimiento
+                <i ></i>
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -393,4 +402,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
       }
   });
 </script>
-<?php endif; ?><?php /**PATH D:\Escritorio\naviera1\resources\views/layout.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+
+<?php if(Request::is('sal')): ?>
+<script type="text/javascript">
+
+
+  $(document).on('click', '.addRow', function(){
+      addRow();
+  });
+
+  // Agregando filas de compras
+  function addRow()
+  {
+      // Recuperando el select de productos
+      // var selectProducto = document.querySelector('#nombreproducto');
+
+      // console.log(selectProducto);
+
+      // console.log(selectProducto);
+      var tr = '<tr>';
+
+      tr += '<td><input id="nombrelote"  name="nombrelote[]" list="lotes" class="a form-control" autocomplete="off" required></td>'+'<datalist id="lotes"><?php $__currentLoopData = $lotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $l): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option value="<?php echo e($l->id); ?>-<?php echo e(App\producto::find($l->idProdcuto)->nombre); ?> cantidad: <?php echo e($l->cantidadProducto); ?> <?php echo e($temp[$l->id]); ?> "></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></datalist>'+
+      '<td><button type="button" id="btnEliminar" disabled class="btn btn-danger remove">Eliminar</button></td>'
+      '<tr>';
+      $('tbody').append(tr);
+
+  };
+
+  // Eliminando filas de compras
+  $(document).on('click', '.remove', function(){
+      var ultimaFila = $('tbody tr').length;
+      if (ultimaFila == 1) {
+          alert('Lo siento, no se puede eliminar la ultima fila');
+      }else{
+          $(this).parent().parent().remove();
+      }
+  });
+</script>
+<?php endif; ?>
+
+<?php /**PATH D:\Escritorio\naviera1\resources\views/layout.blade.php ENDPATH**/ ?>

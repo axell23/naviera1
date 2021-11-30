@@ -22,6 +22,7 @@ class CreateLotesTable extends Migration
             $table->double('pesoTotal');
             $table->double('total');
             $table->string('estado');
+            $table->string('idSalida');
             $table->timestamps();
         });
     }

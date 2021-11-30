@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\lotes;
 use Illuminate\Http\Request;
+use DateTime;
 
 class LotesController extends Controller
 {
@@ -14,7 +15,20 @@ class LotesController extends Controller
      */
     public function index()
     {
-        //
+        $lotes = lotes::where('estado','activo')->get();
+        //$bahia = bahia::where('estado','Disponible')->get();
+        $temp = [];
+        $hoy = new DateTime();
+        foreach($lotes as $l){
+            $t= new DateTime($l->fechaVencimiento);
+            $diff = $t->diff($hoy);
+            //$b=$diff->days;
+            //$c=$b*($l->total);
+            //$texto = "Monto de almacenamiento: $".$c." días almacenado: ".$b." ";
+             $temp[$l->id]=$diff->days;
+        }
+
+        return view("lotes.vistaLotes", compact('lotes','temp'));
     }
 
     /**
