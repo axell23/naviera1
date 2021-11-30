@@ -21,3 +21,5 @@ Route::resource('cat', 'CategoriaController');
 Route::resource('bah', 'BahiaController');
 
 Route::get('/Ingresosactuales', 'IngresosController@index2')->name('Ingresos');
+Route::get('/Productos', 'ProductoController@index2')->name('productos');
+Route::get('/pdf/{id}', 'IngresosController@notaDeIngreso')->name('pdfingreso');

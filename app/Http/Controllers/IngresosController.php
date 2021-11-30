@@ -9,6 +9,7 @@ use App\bahia;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use PDF;
 
 class IngresosController extends Controller
 {
@@ -21,6 +22,7 @@ class IngresosController extends Controller
     {
         $producto = Producto::all();
         $bahia = bahia::where('estado','Disponible')->get();
+
         return view("Ingreso.CrudIngresos", compact('producto','bahia'));
         //
     }
@@ -42,6 +44,20 @@ class IngresosController extends Controller
         //
     }
 
+    public static function notaDeIngreso($id)
+    {      
+        $Ingreso = Ingresos::where('id',$id)
+                                ->get();
+        $lotes = lotes::where('idIngreso', $id)
+        ->get();
+
+
+        $pdf = \PDF::loadView('PDF.NotaDeIngreso', compact('Ingreso', 'lotes'));
+        //dd($pdf);
+        
+        return $pdf->download('NotadeIngreso.pdf');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -61,7 +77,10 @@ class IngresosController extends Controller
     public function store(Request $request)
     {
         //dd($request);
+        //ingreso
         $Ingreso = new Ingresos();
+
+        //bahia
         $bahia= bahia::where('id',$request->bahia)->first();
         $bahia->estado="Activo";
         $bahia->update();
@@ -76,6 +95,7 @@ class IngresosController extends Controller
         $producto = $request->nombreproducto;
         //dd($producto);
 
+        //lote
         for($i=0; $i< sizeof($producto);$i++){
             $Lote = new lotes();
             $id = explode("-",$producto[$i]);
@@ -83,10 +103,14 @@ class IngresosController extends Controller
             //dd($TEMP);
             $pesos=$TEMP * $request->idcantidad[$i];
 
+
+            //actualiza producto
+            $pro= Producto::where('id',$id[0])->first();
+            $pro->cantidad += $request->idcantidad[$i];
+            $pro->update();
+            //ingresa lote
             $Lote->idProdcuto=$id[0];
             $Lote->idIngreso=$a;
-
-
             $Lote->cantidadProducto=$request->idcantidad[$i];
             $Lote->fechaVencimiento=$request->idprecioC[$i];
             $Lote->pesoTotal=$pesos;
@@ -97,11 +121,20 @@ class IngresosController extends Controller
         }
         
         
+        $Ingreso = Ingresos::where('id',$a)
+                                ->get();
+        $lotes = lotes::where('idIngreso', $a)
+        ->get();
+        $pdf = \PDF::loadView('PDF.NotaDeIngreso', compact('Ingreso', 'lotes'));
+        //dd($pdf);
         
+        //return 
        
         $producto = Producto::all();
         $bahia = bahia::where('estado','Disponible')->get();
-        return view("Ingreso.CrudIngresos", compact('producto','bahia'));
+        return $pdf->setPaper('a4', 'landscape')->download('NotadeIngreso.pdf');
+        //return view("Ingreso.CrudIngresos", compact('producto','bahia','a'));
+       // return $this->notaDeIngreso($a);
     }
 
     /**

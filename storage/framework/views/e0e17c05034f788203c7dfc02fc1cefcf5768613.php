@@ -1,5 +1,6 @@
 <?php $__env->startSection('content'); ?>
 	<div class="container">
+		
 		<form method="POST" action="<?php echo e(route('ing.store')); ?>">
 			<?php echo csrf_field(); ?>
 			<section>

@@ -19,6 +19,7 @@ class CreateProductosTable extends Migration
             $table->double('peso');
             $table->text('descripcion');
             $table->string('categoria');
+            $table->string('cantidad');
             $table->timestamps();
         });
     }

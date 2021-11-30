@@ -21,6 +21,23 @@ class ProductoController extends Controller
 
     }
 
+    public function index2()
+    {
+        $producto = Producto::all();
+        // $lotes = DB::table('lotes')
+        // ->select('idIngreso',DB::raw('SUM(pesoTotal) AS P'),DB::raw('SUM(total) AS T'))
+        // ->groupBy('idIngreso')
+        // ->get();
+
+            
+        
+
+        //dd($lotes);
+        //$bahia = bahia::where('estado','Disponible')->get();
+        return view("Productos.VistaProducto", compact('producto'));
+        //
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,7 +64,7 @@ class ProductoController extends Controller
         $creandoProducto->peso = $request->peso;
         $creandoProducto->descripcion = $request->descripcion;
         $creandoProducto->categoria= $request->idCategoria;
-
+        $creandoProducto->cantidad= 0;
         
         $creandoProducto->save();
         $categoria = Categoria::all();

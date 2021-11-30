@@ -46,7 +46,7 @@
 				<div class="panel panel-footer">
 				
 			</section>
-			<button id="btmsubmitC" name="btmsubmitC" type="submit" class="btn btn-primary" >Ingresar Categoria</button>
+			<button id="btmsubmitC" name="btmsubmitC" type="submit" class="btn btn-primary" >Ingresar Producto</button>
 			<a href=""><button type="button" id="btnLimpiar" class="btn btn-danger">Limpiar Campos</button></a>
 		</form>
 	</div>

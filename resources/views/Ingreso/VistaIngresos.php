@@ -13,7 +13,6 @@
 	</div>
 
 
-
     <table class="table table-hover table-condensed">
     <div class="input-group-prepend">
         <input class="form-control mr-sm-2" name="textoCompra" id="textoCompra" type="text" placeholder="Buscar Productos" aria-label="Search">

@@ -193,7 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <!-- Productos -->
-          <li class="nav-item menu-open">
+          <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-boxes"></i>
               
@@ -210,7 +210,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/Productos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ver</p>
                 </a>
@@ -230,9 +230,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           <!-- Ingreso -->
-          <li class="nav-item menu-open">
+          <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-truck-loading"></i>
+              <i class="nav-icon fas fa-truck-moving"></i>
               <p>
                 Ingreso
                 <i class="right fas fa-angle-left"></i>
@@ -253,8 +253,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
+        <!-- descarga -->
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-truck-loading"></i>
+              <p>
+                Descarga
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar salida</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver salidas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <!-- Bahias -->
-          <li class="nav-item menu-open">
+          <li class="nav-item menu-close">
               <a href="{{route('bah.index')}}" class="nav-link active">
                 <i class="nav-icon fas fa-ship"></i>
                 <p>
