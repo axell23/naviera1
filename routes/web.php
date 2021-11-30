@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('ing', 'IngresosController');
+Route::resource('Reg', 'ProductoController');
+Route::resource('cat', 'CategoriaController');
+Route::resource('bah', 'BahiaController');
+Route::resource('sal', 'SalidasController');
+Route::resource('lot', 'LotesController');
+
+Route::get('/Ingresosactuales', 'IngresosController@index2')->name('Ingresos');
+Route::get('/salidas', 'SalidasController@index2')->name('salidas');
+Route::get('/Productos', 'ProductoController@index2')->name('productos');
+Route::get('/pdf/{id}', 'IngresosController@notaDeIngreso')->name('pdfingreso');

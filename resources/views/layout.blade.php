@@ -162,7 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Naviera ISWT2</span>
     </a>
 
     <!-- Sidebar -->
@@ -192,37 +192,107 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+              <!-- Productos -->
+          <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-boxes"></i>
+              
               <p>
-                Starter Pages
+                Inventario
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{route('Reg.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Registrar Producto</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/Productos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Ver</p>
+                </a>
+              </li>           
+
+              <li class="nav-item">
+                <a href="{{route('cat.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar Categoria</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver Categoria</p>
+                </a>
+              </li>
+            </ul>
+          <!-- Ingreso -->
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-truck-moving"></i>
+              <p>
+                Ingreso
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('ing.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar ingreso</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/Ingresosactuales" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver Ingresos</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+        <!-- descarga -->
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-truck-loading"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Descarga
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('sal.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar salida</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/salidas" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ver salidas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- Bahias -->
+          <li class="nav-item menu-close">
+            <a href="{{route('bah.index')}}" class="nav-link active">
+              <i class="nav-icon fas fa-ship"></i>
+              <p>
+                Bahias
+                <i ></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-close">
+            <a href="{{route('lot.index')}}" class="nav-link active">
+              <i class="nav-icon far fa-calendar-check"></i>
+              <p>
+                Control de Vencimiento
+                <i ></i>
               </p>
             </a>
           </li>
@@ -255,66 +325,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
-          </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      @yield('content')
     </div>
     <!-- /.content -->
   </div>
@@ -352,3 +363,82 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="dist/js/adminlte.min.js"></script>
 </body>
 </html>
+
+@if (Request::is('ing'))
+<script type="text/javascript">
+
+
+  $(document).on('click', '.addRow', function(){
+      addRow();
+  });
+
+  // Agregando filas de compras
+  function addRow()
+  {
+      // Recuperando el select de productos
+      // var selectProducto = document.querySelector('#nombreproducto');
+
+      // console.log(selectProducto);
+
+      // console.log(selectProducto);
+      var tr = '<tr>';
+
+      tr += '<td><input id="nombreproducto"  name="nombreproducto[]" list="productos" class="a form-control" autocomplete="off" required></td>'+'<datalist id="productos">@foreach ($producto as $productoiten)<option value="{{$productoiten->id}}-{{$productoiten->nombre}} ({{$productoiten->peso}}kg)"></option>	@endforeach</datalist>'+
+      '<td><input type="number" min="0" name="idcantidad[]" class="b form-control" required></td>'+
+      '<td><input type="date" min="0" step="any" name="idprecioC[]" class="c form-control" required></td>'+
+      '<td><a href="#" class="btn btn-danger remove">Eliminar</a></td>'
+      '<tr>';
+      $('tbody').append(tr);
+
+  };
+
+  // Eliminando filas de compras
+  $(document).on('click', '.remove', function(){
+      var ultimaFila = $('tbody tr').length;
+      if (ultimaFila == 1) {
+          alert('Lo siento, no se puede eliminar la ultima fila');
+      }else{
+          $(this).parent().parent().remove();
+      }
+  });
+</script>
+@endif
+
+@if (Request::is('sal'))
+<script type="text/javascript">
+
+
+  $(document).on('click', '.addRow', function(){
+      addRow();
+  });
+
+  // Agregando filas de compras
+  function addRow()
+  {
+      // Recuperando el select de productos
+      // var selectProducto = document.querySelector('#nombreproducto');
+
+      // console.log(selectProducto);
+
+      // console.log(selectProducto);
+      var tr = '<tr>';
+
+      tr += '<td><input id="nombrelote"  name="nombrelote[]" list="lotes" class="a form-control" autocomplete="off" required></td>'+'<datalist id="lotes">@foreach ($lotes as $l)<option value="{{$l->id}}-{{App\producto::find($l->idProdcuto)->nombre}} cantidad: {{$l->cantidadProducto}} {{$temp[$l->id]}} "></option>@endforeach</datalist>'+
+      '<td><button type="button" id="btnEliminar" disabled class="btn btn-danger remove">Eliminar</button></td>'
+      '<tr>';
+      $('tbody').append(tr);
+
+  };
+
+  // Eliminando filas de compras
+  $(document).on('click', '.remove', function(){
+      var ultimaFila = $('tbody tr').length;
+      if (ultimaFila == 1) {
+          alert('Lo siento, no se puede eliminar la ultima fila');
+      }else{
+          $(this).parent().parent().remove();
+      }
+  });
+</script>
+@endif
+
